@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package messenger.dispatch.v1;
+
+option go_package = "github.com/Evgen-Poloniy/messenger-proto/gen/go/dispatch/v1;dispatchv1";
+
+service DispatchService {
+  rpc DispatchMessage (DispatchMessageRequest) returns (DispatchMessageResponse);
+}
+
+message DispatchMessageRequest {
+  int64 message_id = 1;
+  int64 sender_id = 2;
+  repeated int64 recipient_ids = 3;
+  string message = 4;
+}
+
+message DispatchMessageResponse {
+  repeated int64 offline_user_ids = 1;
+}
